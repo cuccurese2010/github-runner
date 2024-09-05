@@ -1,5 +1,5 @@
 # Usa un'immagine di base
-FROM nginx:1.19.3
+FROM nginx:latest
 
 # Copia il contenuto nella directory di default di nginx
 #COPY ./index.html /usr/share/nginx/html/index.html
