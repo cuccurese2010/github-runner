@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: alpine-deployment
   namespace: test
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx
+      app: alpine
   template:
     metadata:
       labels:
-        app: nginx
+        app: alpine
     spec:
       containers:
       - name: nginx
@@ -22,7 +22,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-service
+  name: alpine-service
   namespace: test
 spec:
   selector:
