@@ -1,0 +1,8 @@
+# Usa un'immagine di base
+FROM nginx:1.19.3
+
+# Copia il contenuto nella directory di default di nginx
+COPY ./index.html /usr/share/nginx/html/index.html
+
+# Esponi la porta 80
+EXPOSE 80
