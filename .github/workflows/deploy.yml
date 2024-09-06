@@ -34,6 +34,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Set Image Tag
+      run: |
+        IMAGE_TAG="ghcr.io/${{ github.repository }}/nginx:latest${{ github.sha }}"
+        sed -i "s|image: ghcr.io/${{ github.repository }}/nginx:.*|image: $IMAGE_TAG|" deployment.yml
+
     - name: Deploy to Kubernetes
       run: |
         kubectl apply -f deployment.yml
