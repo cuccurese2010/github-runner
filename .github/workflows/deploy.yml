@@ -5,9 +5,9 @@ on:
     branches:
       - main
     paths:
-      - 'Dockerfile'
+      - 'docker/Dockerfile'  # Aggiornato il percorso del Dockerfile
       - '.github/workflows/deploy.yml'
-      - 'deployment.yml'  # Aggiunto per monitorare i cambiamenti nel file di deployment
+      - 'docker/deployment.yml'  # Aggiornato il percorso del file di deployment
 
 jobs:
   build_and_push:
@@ -21,7 +21,7 @@ jobs:
       
     - name: Build Docker image
       run: |
-             sudo docker build -t ghcr.io/cuccurese2010/nginx:latest .
+             sudo docker build -t ghcr.io/cuccurese2010/nginx:latest ./docker  # Aggiornato per puntare alla cartella docker
 
     - name: Push Docker image
       run: |
@@ -36,4 +36,4 @@ jobs:
 
     - name: Deploy to Kubernetes
       run: |
-        kubectl apply -f deployment.yml
+        kubectl apply -f ./docker/deployment.yml  # Aggiornato per puntare alla cartella docker
