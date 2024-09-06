@@ -21,7 +21,7 @@ jobs:
       
     - name: Build Docker image
       run: |
-             docker build . -t ghcr.io/cuccurese2010/nginx:latest .
+             sudo docker build -t ghcr.io/cuccurese2010/nginx:latest .
 
     - name: Push Docker image
       run: |
