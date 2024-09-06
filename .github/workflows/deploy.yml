@@ -1,4 +1,4 @@
-name: Deploy to Kubernetes test
+name: Deploy to Kubernetes
 
 on:
   push:
