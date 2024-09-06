@@ -25,7 +25,7 @@ jobs:
 
     - name: Push Docker image
       run: |
-             docker push ghcr.io/cuccurese2010/nginx:latest
+             sudo docker push ghcr.io/cuccurese2010/nginx:latest
 
   deploy:
     needs: build_and_push
