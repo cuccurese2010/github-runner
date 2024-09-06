@@ -18,7 +18,7 @@ jobs:
 
     - name: Log in to GitHub Container Registry
       run: |
-             docker login --username cuccurese2010 --password ${{ secrets.CR_PAT }} ghcr.io
+             docker login --username cuccurese2010 --password-stdin ${{ secrets.CR_PAT }} ghcr.io
 
     - name: Build Docker image
       run: |
