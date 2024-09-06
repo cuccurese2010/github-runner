@@ -21,11 +21,11 @@ jobs:
       
     - name: Build Docker image
       run: |
-             docker build .  --tag ghcr.io/cuccurese2010/github-runner/nginx:latest
+             docker build . -t ghcr.io/cuccurese2010/nginx:latest .
 
     - name: Push Docker image
       run: |
-             docker push ghcr.io/cuccurese2010/github-runner/nginx:latest
+             docker push ghcr.io/cuccurese2010/nginx:latest
 
   deploy:
     needs: build_and_push
