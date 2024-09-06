@@ -21,11 +21,11 @@ jobs:
 
     - name: Build Docker image
       run: |
-        sudo docker build -t ghcr.io/${{ github.repository }}/nginx:latest${{ github.sha }} .
+        sudo docker build . —tag ghcr.io/cuccurese2010/github-runner/nginx:latest
 
     - name: Push Docker image
       run: |
-        sudo docker push ghcr.io/${{ github.repository }}/nginx:latest${{ github.sha }}
+        sudo docker push ghcr.io/cuccurese2010/github-runner/nginx:latest
 
   deploy:
     needs: build_and_push
@@ -33,11 +33,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
-    - name: Set Image Tag
-      run: |
-        IMAGE_TAG="ghcr.io/${{ github.repository }}/nginx:latest${{ github.sha }}"
-        sed -i "s|image: ghcr.io/${{ github.repository }}/nginx:.*|image: $IMAGE_TAG|" deployment.yml
 
     - name: Deploy to Kubernetes
       run: |
