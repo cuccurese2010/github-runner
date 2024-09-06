@@ -5,9 +5,9 @@ on:
     branches:
       - main
     paths:
-      - 'docker/Dockerfile'  # Aggiornato il percorso del Dockerfile
-      - '.github/workflows/deploy.yml'
-      - 'docker/deployment.yml'  # Aggiornato il percorso del file di deployment
+      - 'docker/Dockerfile'  # Percorso del Dockerfile
+      - '.github/workflows/deploy.yml' # Percorso del file per il workflows
+      - 'docker/deployment.yml'  # Percorso del file che effettua il deploy su kubernetes 
 
 jobs:
   build_and_push:
@@ -17,15 +17,15 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Log in to GitHub Container Registry
-      run: echo "${{ secrets.CR_PAT }}" | sudo docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      run: echo "${{ secrets.CR_PAT }}" | sudo docker login ghcr.io -u ${{ github.actor }} --password-stdin # Effettua la login sul registy Github
       
     - name: Build Docker image
       run: |
-             sudo docker build -t ghcr.io/cuccurese2010/nginx:latest ./docker  # Aggiornato per puntare alla cartella docker
+             sudo docker build -t ghcr.io/cuccurese2010/nginx:latest ./docker  # Crea la build dal Dockerfile
 
     - name: Push Docker image
       run: |
-             sudo docker push ghcr.io/cuccurese2010/nginx:latest
+             sudo docker push ghcr.io/cuccurese2010/nginx:latest # Fa il push della build nel registry
 
   deploy:
     needs: build_and_push
@@ -36,4 +36,4 @@ jobs:
 
     - name: Deploy to Kubernetes
       run: |
-        kubectl apply -f ./docker/deployment.yml  # Aggiornato per puntare alla cartella docker
+        kubectl apply -f ./docker/deployment.yml  # Qui viene lanciato il file per il deploy su kubernetes
