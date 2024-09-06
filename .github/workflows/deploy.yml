@@ -17,15 +17,15 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Log in to GitHub Container Registry
-      run: echo "${{ secrets.CR_PAT }}" | sudo docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      run: docker login --username cuccurese2010 --password ${{ secrets.CR_PAT }} ghcr.io
 
     - name: Build Docker image
       run: |
-        sudo docker build . —-tag ghcr.io/cuccurese2010/nginx:latest 
+             docker build .  --tag ghcr.io/cuccurese2010/github-runner/nginx:latest
 
     - name: Push Docker image
       run: |
-        sudo docker push ghcr.io/cuccurese2010/nginx:latest
+             docker push ghcr.io/cuccurese2010/github-runner/nginx:latest
 
   deploy:
     needs: build_and_push
