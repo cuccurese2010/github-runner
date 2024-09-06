@@ -15,11 +15,11 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: ghcr.io/cuccurese2010/nginx:latest
+        image: ghcr.io/cuccurese2010/nginx:latest  # ghcr.io e' il registry su github dove e' depositata l'immagine
         ports:
         - containerPort: 80
       imagePullSecrets:
-      - name: ghcr-secret  # Aggiungi il tuo secret Docker qui
+      - name: ghcr-secret  # Questo secret e' stato creato nei secret di Kubernetes
 ---
 apiVersion: v1
 kind: Service
