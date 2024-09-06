@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: ghcr.io/${{ github.repository }}/nginx:latest  # Usa il tag giusto qui
+        image: ghcr.io/cuccurese2010/nginx:latest  # Usa il tag giusto qui
         ports:
         - containerPort: 80
 ---
