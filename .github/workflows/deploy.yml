@@ -21,11 +21,11 @@ jobs:
 
     - name: Build Docker image
       run: |
-        sudo docker build -t ghcr.io/${{ github.repository }}/alpine:${{ github.sha }} .
+        sudo docker build -t ghcr.io/${{ github.repository }}/nginx:${{ github.sha }} .
 
     - name: Push Docker image
       run: |
-        sudo docker push ghcr.io/${{ github.repository }}/alpine:${{ github.sha }}
+        sudo docker push ghcr.io/${{ github.repository }}/nginx:${{ github.sha }}
 
   deploy:
     needs: build_and_push
