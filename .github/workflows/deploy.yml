@@ -17,9 +17,8 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Log in to GitHub Container Registry
-      run: |
-             docker login --username cuccurese2010 --password-stdin ${{ secrets.CR_PAT }} ghcr.io
-
+      run: echo "${{ secrets.CR_PAT }}" | sudo docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      
     - name: Build Docker image
       run: |
              docker build .  --tag ghcr.io/cuccurese2010/github-runner/nginx:latest
